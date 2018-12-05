@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Fee Ledger</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid *ngIf="MainLedger!=null" >
+        <ion-row padding>
+            <ion-col>
+               
+                   
+                    <p>Total</p>
+                        <h2>{{MainLedger.TotalDue}}</h2>
+                    
+                
+            </ion-col>
+            <ion-col>
+               
+                    
+                        <p>Paid</p>
+                        <h2>{{MainLedger.TotalPaid}}</h2>
+                   
+            </ion-col>
+            <ion-col>
+               
+                    
+                        <p>Balance</p>
+                        <h2>{{MainLedger.TotalBalance}}</h2>
+                   
+               
+            </ion-col>
+        </ion-row>
+        <!--<ion-row>
+            <ion-col>
+                <strong>Total</strong>
+            </ion-col>
+            <ion-col>
+                <div>{{MainLedger.TotalDue}}</div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <strong>Paid</strong>
+            </ion-col>
+            <ion-col>
+                <div>{{MainLedger.TotalPaid}}</div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <strong>Balance</strong>
+            </ion-col>
+            <ion-col>
+                <div>{{MainLedger.TotalBalance}}</div>
+            </ion-col>
+        </ion-row>-->
+        <ion-row>
+            <ion-col></ion-col>
+            <ion-col >
+                <button ion-button  color="ecolor" (click)="GetLedgerSummary()">Detail</button>
+            </ion-col>
+            <ion-col></ion-col>
+
+        </ion-row>
+        </ion-grid>
+    <ion-grid *ngIf="LedgerDetail" class="gsgrid">
+        <ion-row class="gsheader">
+            <ion-col col-3>
+                <strong>Period</strong>
+            </ion-col>
+            <ion-col col-3>
+                <strong>Total</strong>
+            </ion-col>
+            <ion-col col-3>
+                <strong>Paid</strong>
+            </ion-col>
+            <ion-col col-3>
+                <strong>Balance</strong>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let ld of LedgerDetail">
+            <ion-col col-3>
+                {{ld.strPeriod}}
+            </ion-col>
+            <ion-col col-3>
+                {{ld.numTotalDue}}
+            </ion-col>
+            <ion-col col-3>
+                {{ld.numTotalPaid}}
+            </ion-col>
+            <ion-col col-3>
+                {{ld.numTotalBalance}}
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+        <ion-row *ngIf="msg!=null" padding>
+            <p>
+                {{msg}}
+            </p>
+        </ion-row>
+</ion-content>

@@ -1,0 +1,152 @@
+<ion-menu [content]="content">
+    <ion-header >
+        <ion-toolbar color="gsapp">
+            <div text-center>
+                <img src="assets/imgs/logo.png" height="70" />
+            </div>
+            <div margin-bottom  margin-top>
+                <ion-title *ngIf="schooldetail">{{schooldetail.strSchoolName}}</ion-title>
+            </div>
+        </ion-toolbar>
+
+
+        <button ion-item menuClose (click)="GotoPage('Student')" >
+            <ion-icon name="contacts" item-start color="ecolor"></ion-icon>
+            {{_authservice.CurrenStudentName()}}
+            <ion-icon name="arrow-forward" item-end ></ion-icon>
+        </button>
+
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <!--<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                {{p.title}}
+            </button>-->
+            <button menuClose ion-item (click)="GotoPage('Feedback')">
+                <ion-icon name="text" item-start color="ecolor"></ion-icon>
+
+                Feedback
+            </button>
+            <button menuClose ion-item (click)="GotoPage('AboutUs')">
+                <ion-icon name="school" item-start  color="ecolor"></ion-icon>
+
+                About Us
+            </button>
+            <button menuClose ion-item (click)="GotoPage('AboutUsofts')">
+                <ion-icon name="bookmarks" item-start  color="ecolor"></ion-icon>
+                About uSofts
+            </button>
+            <a href="http://usofts.net/" menuClose ion-item target="_blank">
+                <ion-icon name="help-circle" item-start  color="ecolor"></ion-icon>
+
+                Help
+            </a>
+            <!--<button menuClose ion-item (click)="GotoPage('AboutUsofts')">
+                Help
+            </button>-->
+            <button menuClose ion-item (click)="LogOut()">
+                <ion-icon name="power" item-start  color="ecolor"></ion-icon>
+
+                Logout
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" ></ion-nav>
+
+
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+      <ion-title *ngIf="schooldetail">{{schooldetail.strSchoolName}}</ion-title>
+    <!--<ion-title>Dashboard</ion-title>-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="dashitems">
+    <ion-row>
+      
+        <ion-col>
+            <ion-card (click)="GotoPage('WorkSheet')">
+                <img src="assets/imgs/d1.png" />
+                <div class="card-title" text-center>Work Sheet</div>
+            </ion-card>
+        </ion-col>
+        <ion-col>
+            <ion-card (click)="GotoPage('Attendance')">
+                <img src="assets/imgs/d2.png" />
+                <div class="card-title" text-center>Attendance</div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-card (click)="GotoPage('Academic')">
+                <img src="assets/imgs/d3.png" />
+                <div class="card-title" text-center>Academics Result</div>
+            </ion-card>
+        </ion-col>
+        <ion-col>
+            <ion-card (click)="GotoPage('OnlinePayment')">
+                <img src="assets/imgs/d4.png" />
+                <div class="card-title" text-center>Online Payment</div>
+            </ion-card>
+        </ion-col>
+        <!--<ion-col>
+            <ion-card (click)="GotoPage('Ledger')">
+                <img src="../../assets/imgs/d4.png" />
+                <div class="card-title" text-center>Fee Ledger</div>
+            </ion-card>
+        </ion-col>-->
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-card (click)="GotoPage('Ledger')">
+                <img src="assets/imgs/d5.png" />
+                <div class="card-title" text-center>Fee Ledger</div>
+            </ion-card>
+        </ion-col>
+        <ion-col>
+            <ion-card (click)="GotoPage('gpstracker')">
+                <img src="assets/imgs/d6.png" />
+                <div class="card-title" text-center>GPS Tracker</div>
+            </ion-card>
+            <!--<ion-card (click)="GotoPage('WorkSheet')">
+                <img src="../../assets/imgs/d6.png" />
+                <div class="card-title" text-center>Work Sheet</div>
+            </ion-card>-->
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-card (click)="GotoPage('Notifications')">
+                <img src="assets/imgs/d7.png" />
+                <div class="card-title" text-center>Notifications</div>
+            </ion-card>
+        </ion-col>
+       
+        <ion-col>
+            <ion-card (click)="GotoPage('Gallery')">
+                <img src="assets/imgs/d8.png" />
+                <div class="card-title" text-center>Media Gallery</div>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+  
+   
+    <!--<button ion-button secondary (click)="GotoPage('Notifications')"> Notifications</button>
+    <button ion-button secondary (click)="GotoPage('Attendance')">Attendance</button>
+    <button ion-button secondary (click)="GotoPage('Academic')">Academics Result</button>
+    <button ion-button secondary (click)="GotoPage('Ledger')">Fee Ledger</button>
+    <button ion-button secondary (click)="GotoPage('Feedback')">Feedback</button>
+    <button ion-button secondary (click)="GotoPage('WorkSheet')">Work Sheet </button>
+    <button ion-button secondary (click)="GotoPage('Gallery')">Gallery</button>-->
+
+</ion-content>

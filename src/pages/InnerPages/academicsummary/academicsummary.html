@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{termname}}- {{subjectname}} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+   
+        <ion-grid *ngIf="mainobject" class="gsgrid">
+           
+            <ion-row class="gsheader">
+                <ion-col>
+                    <strong>Assesment</strong>
+                </ion-col>
+                <ion-col>
+                    <strong>Marks</strong>
+                </ion-col>
+                <ion-col>
+                    <strong>Grade</strong>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let ad of mainobject">
+               
+                <ion-col>
+                    {{ad.TypeOfAssesment.AssesmentName}}
+                </ion-col>
+                <ion-col>
+                    {{ad.strMarks}}
+                </ion-col>
+                <ion-col>
+                    {{ad.strGrade}}
+                </ion-col>
+        </ion-row>
+       </ion-grid>
+    <ion-row *ngIf="msg" padding>
+        <p>{{msg}}</p>
+    </ion-row>
+</ion-content>

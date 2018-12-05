@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Work Sheet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list *ngIf="notificationdetails!=null && !isList">
+        <ion-item-divider color="light">Subjects</ion-item-divider>
+        <button ion-item *ngFor="let subject of subjects" (click)="subjectSelected(subject)">
+            {{ subject.SubjectName }}
+        </button>  
+    </ion-list>
+
+
+    <ion-list *ngIf="notificationbysubject!=null && isList">
+        <div padding>
+            <button ion-button  icon-start (click)="isList=false"  round small>
+                <ion-icon name='arrow-dropleft'></ion-icon>
+               subjects
+            </button>
+        </div>
+            <ion-card *ngFor="let nd of notificationbysubject" color="gsinner">
+               
+               
+
+                <ion-card-content>
+                    <ion-card-title class="card-content-gs">
+                        {{nd.BlogDetail.title}}
+                    </ion-card-title>
+                   
+                        <ion-col class="gsdate">
+                            {{nd.notificationsentdate | date:'medium'}}
+                        </ion-col>
+                        <!--<ion-col>
+                            {{nd.BlogDetail.createdByName}}
+                        </ion-col>-->
+                    
+                    
+                        <div  class="card-content-gs" innerHTML={{nd.BlogDetail.description}}>
+                        </div>
+                    
+                </ion-card-content>
+                <!--<img src="{{imagedir}}/{{nd.BlogDetail.imagepath}}" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype=='image/jpeg'" alt="{{nd.BlogDetail.title}} image" />
+                <a target="_blank" href="{{imagedir}}/{{nd.BlogDetail.imagepath}}" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype!=='image/jpeg'" ion-button
+                   clear color="dark">Download</a>-->
+                <a target="_blank" href="{{imagedir}}/{{nd.BlogDetail.imagepath}}" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype!=='image/jpeg'" ion-button
+                   clear color="dark" >Download</a>
+                <div (click)="savetolibrary(nd.BlogDetail)" ion-button
+                   clear color="dark" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype=='image/jpeg'">Download</div>
+            </ion-card>
+        
+    </ion-list>
+    <ion-row *ngIf="msg" padding>
+        <p>{{msg}}</p>
+    </ion-row>
+</ion-content>

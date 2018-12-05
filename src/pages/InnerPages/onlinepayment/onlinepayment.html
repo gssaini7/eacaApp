@@ -1,0 +1,70 @@
+
+<ion-header>
+    <ion-navbar color="gsapp">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title> Online Payment</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+    <ion-card *ngIf="currentstudent">
+        <ion-card-content>
+         
+            <ion-grid>
+                <ion-row>
+                    <ion-col><strong> Student Name</strong></ion-col>
+                    <ion-col>{{currentstudent.strStudentName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><strong>Father Name</strong></ion-col>
+                    <ion-col>{{currentstudent.strFatherName}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><strong> Admission Number</strong></ion-col>
+                    <ion-col>{{currentstudent.strAdmissionNo}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col><strong> Class </strong></ion-col>
+                    <ion-col>{{currentstudent.OfClass.ClassName}} - {{currentstudent.OfSection.SectionName}}</ion-col>
+                </ion-row>
+               
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <form (ngSubmit)="SendDetail()" #registerForm="ngForm">
+        <ion-card *ngIf="currentstudent">
+            <ion-card-content>
+
+                <ion-list>
+                    <ion-item>
+                        <ion-label floating><strong> Amount</strong></ion-label>
+                        <ion-input name="feeamount" type="number" min="1" required [(ngModel)]="opmodel.feeamount"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Remarks</ion-label>
+                        <ion-textarea name="feeremarks" value="" [(ngModel)]="opmodel.remarks"></ion-textarea>
+                    </ion-item>
+                    <ion-item>
+                        <button ion-button color="primary" block [disabled]="!registerForm.form.valid">Submit</button>
+                    </ion-item>
+
+
+                </ion-list>
+
+
+
+            </ion-card-content>
+
+
+        </ion-card>
+    </form>
+    <!--<button ion-button (click)="openWithSystemBrowser('https://www.techiediaries.com')">Open with System browser</button>-->
+    <!--<button ion-button (click)="openWithInAppBrowser('https://www.techiediaries.com')">Open with In App browser</button>-->
+    <!--<button ion-button (click)="openWithCordovaBrowser('https://www.techiediaries.com')">Open with Cordova browser</button>-->
+   
+
+
+</ion-content>

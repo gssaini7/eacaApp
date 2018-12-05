@@ -1,0 +1,7 @@
+{
+  "name": "eAcademics",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

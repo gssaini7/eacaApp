@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Feedback</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form (ngSubmit)="SendDetail()" #registerForm="ngForm" >
+        <div padding>
+            <p>We are very much interested in getting the views and suggestions of our valuable clients. Needless to say, we will try our level best to meet your requirements and suggestions.</p>
+            <p>Looking forward for Long term relationship.</p>
+        </div>
+        <ion-list>
+
+            <ion-item>
+                <ion-label>Select</ion-label>
+                <ion-select [(ngModel)]="feedbackdetail.FeedbackType" name="FeedbackType" required>
+                    <ion-option value="Complaint">Complaint</ion-option>
+                    <ion-option value="Suggestion">Suggestion</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Message</ion-label>
+                <ion-textarea name="FeedbackMessage" value="" [(ngModel)]="feedbackdetail.FeedbackMessage" required></ion-textarea>
+            </ion-item>
+
+        </ion-list>
+
+        <div padding>
+            <button ion-button color="primary" block [disabled]="!registerForm.form.valid">Submit</button>
+        </div>
+    </form>
+    <ion-row padding> {{msg}}</ion-row>
+</ion-content>

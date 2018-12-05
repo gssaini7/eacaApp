@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Academic</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-row *ngIf="resulttype!=null">
+       
+            <ion-item>
+                <ion-label>Select</ion-label>
+                <ion-select [(ngModel)]="resulttypeselected" (ionChange)="SelectedOption()">
+                    <ion-option *ngFor="let r of resulttype" [value]="r">{{r.TermName}}</ion-option>
+                </ion-select>
+            </ion-item>
+       
+    </ion-row>
+        <ion-grid *ngIf="filteredacademicdetail" class="gsgrid">
+            <ion-row class="gsheader">
+                <!--<ion-col>
+                    <strong>Type</strong>
+                </ion-col>-->
+                <ion-col>
+                    <strong>Subject</strong>
+                </ion-col>
+                <ion-col>
+                    <strong>Marks</strong>
+                </ion-col>
+                <ion-col>
+                    <strong>Grade</strong>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let ad of filteredacademicdetail">
+                <!--<ion-col>
+                    {{ad.strAssessment}}
+                </ion-col>-->
+                <ion-col class="primaryc" (click)="GetDetailMarks(ad.ForSubject)">
+                    {{ad.ForSubject.SubjectName}}
+                </ion-col>
+                <ion-col>
+                    {{ad.strTotalMarks}}
+                </ion-col>
+                <ion-col>
+                    {{ad.strTotalGrade}}
+                </ion-col>
+        </ion-row>
+       </ion-grid>
+    <ion-row *ngIf="msg" padding>
+        <p>{{msg}}</p>
+    </ion-row>
+</ion-content>

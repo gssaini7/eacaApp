@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar  color="gsapp">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="notificationdetails!=null">
+       
+            <ion-card *ngFor="let nd of notificationdetails" class="ion-card" >
+
+                <ion-item>
+                    <h2 text-uppercase >{{nd.BlogDetail.title}}</h2>
+                    <p> 
+                        
+                    
+                            <span item-start>  {{nd.notificationsentdate | date:'medium'}}</span>
+                        <!--<span item-end> {{nd.BlogDetail.createdByName}}</span>-->
+
+</p>
+                </ion-item>
+               
+                <img src="{{imagedir}}/{{nd.BlogDetail.imagepath}}" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype=='image/jpeg'" alt="{{nd.BlogDetail.title}} image" />
+                <a target="_blank" href="{{imagedir}}/{{nd.BlogDetail.imagepath}}" *ngIf="nd.BlogDetail.imagepath!==null && nd.BlogDetail.filetype!=='image/jpeg'"
+                   ion-button
+                   clear color="dark">Download</a>
+
+                <ion-card-content>
+                    <!--<ion-card-title>
+                       {{nd.BlogDetail.title}}
+                    </ion-card-title>-->
+<!--<p>
+    <ion-col>
+        {{nd.notificationsentdate | date:'medium'}}
+    </ion-col>
+    <ion-col>
+        {{nd.BlogDetail.createdByName}}
+    </ion-col>
+</p>-->
+
+                        <p innerHTML={{nd.BlogDetail.description}}>
+                        </p>
+</ion-card-content>
+            </ion-card>
+        
+    </ion-list>
+    <ion-row *ngIf="msg"  padding>
+        <p>{{msg}}</p>
+    </ion-row>
+</ion-content>

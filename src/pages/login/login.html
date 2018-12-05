@@ -1,0 +1,102 @@
+<ion-content class="login-content" >
+    <ion-row class="logo-row" padding>
+        <!--<ion-col></ion-col>
+        <ion-col width-85>
+            <img src="../../assets/imgs/logo.png" />
+        </ion-col>
+        <ion-col></ion-col>-->
+        <ion-col>
+            <!--<img src="../../assets/imgs/logo.png" />
+            <img src="../assets/imgs/logo.png" />
+            <img src="/assets/imgs/logo.png" />-->
+            <img src="assets/imgs/logo.png" />
+           
+
+        </ion-col>
+    </ion-row>
+    <div class="login-box" id="loginbox" *ngIf="!isOTPpart" padding>
+        <form (ngSubmit)="login()" #registerForm="ngForm">
+            <ion-row>
+                <ion-col>
+                    <p class="login-box-text">Please Login</p>
+                    <ion-list inset>
+                        
+                        <ion-item>
+                            <ion-label floating>Mobile</ion-label>
+                            <ion-input type="text"  name="Mobile" [(ngModel)]="registerCredentials.Mobile" required></ion-input>
+                        </ion-item>
+
+                        <ion-item >
+                            <ion-label floating>UID</ion-label>
+                            <ion-input type="text"  name="UID" [(ngModel)]="registerCredentials.dbcode" required></ion-input>
+                        </ion-item>
+                      
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row >
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid" color="gsapp">Send OTP</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>
+    <!--<div class="login-box" id="loginbox" *ngIf="!isOTPpart">
+        <form (ngSubmit)="login()" #registerForm="ngForm">
+            <ion-row>
+                <ion-col>
+                    <ion-list inset>
+
+                        <ion-item>
+                            <ion-input type="text" placeholder="Mobile" name="Mobile" [(ngModel)]="registerCredentials.Mobile" required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-input type="text" placeholder="UID" name="UID" [(ngModel)]="registerCredentials.dbcode" required></ion-input>
+                        </ion-item>
+
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Login</button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </div>-->
+    <div class="login-box" id="otpbox" *ngIf="isOTPpart" padding>
+        <form (ngSubmit)="confirmOTP()" #OTPForm="ngForm">
+            <ion-row>
+                <ion-col>
+                    <p class="login-box-text">Please Login</p>
+                    <ion-list >
+                        <ion-item>
+                            <ion-label floating>Enter OTP</ion-label>
+                            <ion-input type="text" name="OTP" [(ngModel)]="OTPCredentials.OTP" required></ion-input>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit" [disabled]="!OTPForm.form.valid" color="gsapp">Confirm OTP</button>
+                </ion-col>
+            </ion-row>
+        </form>
+        <ion-row padding >
+            <ion-col >
+                <button ion-button  clear (click)="isOTPpart=false;">Login</button>
+                <button ion-button  clear (click)="resendotp()">Resend OTP</button>
+                </ion-col>
+
+</ion-row>
+         
+
+</div>
+    <ion-row padding> {{msg}}</ion-row>
+
+</ion-content>
