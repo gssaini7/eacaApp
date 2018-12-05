@@ -57,7 +57,7 @@ export abstract class BaseService {
 
     protected baseUrl() {
         //return "http://localhost:51131/";
-       return "http://login.eacademics.in/";
+      
 
     }
 }
